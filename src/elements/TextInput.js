@@ -8,16 +8,20 @@ const StyledTextInput = styled.input`
 	width: 100%;
 	font-size: 1.8rem;
 	padding: 1rem 0.5rem;
-	margin-bottom: 1rem;
 	border-radius: 4px;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 `;
 
-const TextInput = ({ name, value, onChange }) => {
+const TextInput = ({ name, value, onChange, label }) => {
 	return (
 		<div>
-			<StyledLabel htmlFor={name}>{name}</StyledLabel>
-			<StyledTextInput name={name} onChange={e => onChange(e.target.value)} value={value} type="text" />
+			{label ? <StyledLabel htmlFor={name}>{label}</StyledLabel> : null}
+			<StyledTextInput
+				name={name}
+				onChange={e => onChange(e.target.value)}
+				value={value}
+				type="text"
+			/>
 		</div>
 	);
 };

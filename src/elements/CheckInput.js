@@ -18,6 +18,7 @@ const StyledLabelCheck = styled.label`
 	height: 3rem;
 	border-radius: 4px;
 	transition: background-color 0.2s ease;
+	cursor: pointer;
 	svg {
 		width: 1.5rem;
 		transform: scale(0);
@@ -41,16 +42,26 @@ const StyledLabelCheck = styled.label`
 	}
 `;
 
-const CheckInput = ({ name, checked, onChange }) => {
+const CheckInput = ({ name, checked, onChange, label }) => {
 	return (
 		<div>
-			<StyledLabel htmlFor={name}>{name}</StyledLabel>
+			{label ? <StyledLabel htmlFor={name}>{label}</StyledLabel> : null}
 			<StyledLabelCheck htmlFor={name} className={checked ? "checked" : ""}>
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+				>
 					<path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" />
 				</svg>
 			</StyledLabelCheck>
-			<StyledCheckInput id={name} checked={checked} onChange={() => onChange()} type="checkbox" />
+			<StyledCheckInput
+				id={name}
+				checked={checked}
+				onChange={() => onChange()}
+				type="checkbox"
+			/>
 		</div>
 	);
 };

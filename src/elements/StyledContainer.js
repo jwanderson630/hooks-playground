@@ -5,19 +5,22 @@ const StyledContainer = styled.div`
 	font-size: 1.8rem;
 	line-height: 1.5;
 	text-align: left;
-	box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.1);
+	box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.07);
 	border-radius: 4px;
-	padding: 1.5rem;
+	padding: 2.5rem 1.5rem;
 	position: relative;
 	user-select: none;
 	:before {
-		${props => `content: "${props.label}"`};
+		${props => `content: "${props.label ? props.label : ""}"`};
 		font-size: 1.4rem;
 		position: absolute;
 		top: -1.2rem;
-		background-color: white;
 		padding: 0 0.5rem;
-		left: 1rem;
+		left: 1.3rem;
+		background-color: #27ae60;
+		color: white;
+		border-radius: 4px;
+		box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.07);
 	}
 `;
 
