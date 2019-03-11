@@ -2,15 +2,15 @@ module.exports = {
 	env: {
 		browser: true,
 		commonjs: true,
-		es6: true,
+		es6: true
 	},
 	extends: "eslint:recommended",
 	parserOptions: {
 		ecmaFeatures: {
-			jsx: true,
+			jsx: true
 		},
 		ecmaVersion: 2018,
-		sourceType: "module",
+		sourceType: "module"
 	},
 	plugins: ["react"],
 	rules: {
@@ -20,5 +20,6 @@ module.exports = {
 		"linebreak-style": ["error", "unix"],
 		quotes: ["error", "double"],
 		semi: ["error", "always"],
-	},
+		"no-console": "off"
+	}
 };

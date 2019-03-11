@@ -5,8 +5,9 @@ const StyledContainer = styled.div`
 	font-size: 1.8rem;
 	line-height: 1.5;
 	text-align: left;
-	box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.07);
-	border-radius: 4px;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05),
+		1px 1px 10px 2px rgba(0, 0, 0, 0.07);
+	border-radius: 0.4rem;
 	padding: 2.5rem 1.5rem;
 	position: relative;
 	user-select: none;
@@ -19,7 +20,7 @@ const StyledContainer = styled.div`
 		left: 1.3rem;
 		background-color: #27ae60;
 		color: white;
-		border-radius: 4px;
+		border-radius: 0.4rem;
 		box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.07);
 	}
 `;

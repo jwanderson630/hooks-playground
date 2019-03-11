@@ -24,7 +24,7 @@ function Playground1() {
 	};
 	return (
 		<StyledPlayground>
-			<h1>Hook 1: Simple useState</h1>
+			<h1>Hook 1: Simple State with useState</h1>
 			<StyledContainer label="Inputs">
 				<InputGrid>
 					<TextInput
@@ -42,8 +42,12 @@ function Playground1() {
 				</InputGrid>
 			</StyledContainer>
 			<StyledContainer label="Outputs">
-				<div>Text: {state.text}</div>
-				<div>Checked: {String(state.checked)}</div>
+				<div>
+					<strong>Text</strong>: {state.text}
+				</div>
+				<div>
+					<strong>Checked</strong>: {state.checked ? "True" : "False"}
+				</div>
 			</StyledContainer>
 		</StyledPlayground>
 	);

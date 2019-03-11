@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { rgba } from "polished";
 import TextInput from "../elements/TextInput";
@@ -8,13 +8,15 @@ import StyledPlayground from "../elements/StyledPlayground";
 import CheckInput from "../elements/CheckInput";
 import CloseButton from "../elements/CloseButton";
 import { darkGrey } from "../utilities";
-
-const initialState = {
-	todos: []
-};
+import useLocalStorage from "../hooks/useLocalStorage";
 
 function reducer(state, action) {
 	switch (action.type) {
+	case "init": {
+		return {
+			todos: action.todos
+		};
+	}
 	case "add":
 		if (!action.newTodo.task) return state;
 		return {
@@ -42,8 +44,6 @@ function reducer(state, action) {
 		throw new Error();
 	}
 }
-
-const getId = task => `${task}${Math.floor(Math.random() * (999 - 100)) + 100}`;
 
 const StyledInlineForm = styled.form`
 	display: grid;
@@ -75,10 +75,22 @@ const StyledTodo = styled.div`
 
 function Playground2() {
 	const [newTodo, setNewTodo] = useState("");
-	const [state, dispatch] = useReducer(reducer, initialState);
+	const [todos, setTodos] = useLocalStorage("todos", []);
+	const [state, dispatch] = useReducer(reducer, { todos: todos });
+	const todoId = useRef(0);
+
+	useEffect(() => {
+		setTodos(state.todos);
+	}, [state.todos]);
+
+	useEffect(() => {
+		todoId.current =
+			state.todos.reduce((prev, current) => Math.max(prev, current.id), 0) + 1;
+	});
+
 	return (
 		<StyledPlayground>
-			<h1>Hook 2: useReducer Todo</h1>
+			<h1>Hook 2: Todo list with useReducer</h1>
 			<StyledContainer label="New todo">
 				<StyledInlineForm
 					onSubmit={e => {
@@ -86,9 +98,10 @@ function Playground2() {
 						setNewTodo("");
 						dispatch({
 							type: "add",
-							newTodo: { task: newTodo, id: getId(newTodo), checked: false }
+							newTodo: { task: newTodo, id: todoId.current, checked: false }
 						});
 						e.target[0].focus();
+						e.target[0].select();
 					}}
 				>
 					<TextInput
@@ -96,7 +109,6 @@ function Playground2() {
 						value={newTodo}
 						onChange={todo => setNewTodo(todo)}
 					/>
-
 					<StyledButton disabled={newTodo.length === 0} type="submit">
 						Add +
 					</StyledButton>
