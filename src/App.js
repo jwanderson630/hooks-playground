@@ -6,6 +6,7 @@ import Playground2 from "./playgrounds/Playground2";
 import Playground3 from "./playgrounds/Playground3";
 import Playground4 from "./playgrounds/Playground4";
 import Playground5 from "./playgrounds/Playground5";
+import Playground6 from "./playgrounds/Playground6";
 import GlobalStyles from "./GlobalStyles";
 
 const StyledMain = styled.main`
@@ -25,6 +26,7 @@ class App extends Component {
 					<Playground3 />
 					<Playground4 />
 					<Playground5 />
+					<Playground6 />
 					<GlobalStyles />
 				</StyledMain>
 			</div>

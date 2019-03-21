@@ -13,7 +13,7 @@ const InputGrid = styled.div`
 
 export const ThemeContext = React.createContext({
 	theme: "light",
-	setTheme: () => {}
+	setTheme: () => { }
 });
 
 function Playground4() {

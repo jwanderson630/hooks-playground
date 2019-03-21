@@ -24,9 +24,7 @@ function Playground5() {
 							<strong>You pressed:</strong> {key === " " ? "Space" : key}
 						</>
 					) : (
-						<span style={{ color: lighten(0.5, darkGrey) }}>
-							(Press a key to see its code!)
-						</span>
+						<span style={{ color: lighten(0.5, darkGrey) }}>(Press a key to see its code!)</span>
 					)}
 				</InputGrid>
 			</StyledContainer>
